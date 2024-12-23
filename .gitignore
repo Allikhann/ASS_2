@@ -1,24 +1,77 @@
-# Compiled class file
-*.class
+// Класс для вида спорта
+class Sport {
+    private String name;
 
-# Log file
-*.log
+    public Sport(String name) {
+        this.name = name;
+    }
 
-# BlueJ files
-*.ctxt
+    public String getName() {
+        return name;
+    }
+}
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+// Класс для описания человека (спортсмена)
+class Athlete {
+    private String name;
+    private int age;
+    private Sport sport;
+    private String club;
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+    public Athlete(String name, int age, Sport sport, String club) {
+        this.name = name;
+        this.age = age;
+        this.sport = sport;
+        this.club = club;
+    }
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Sport getSport() {
+        return sport;
+    }
+
+    public String getClub() {
+        return club;
+    }
+}
+
+// Основной класс с методом main
+public class SportsClub {
+    public static void main(String[] args) {
+        // Создаем виды спорта
+        Sport football = new Sport("Football");
+        Sport basketball = new Sport("Basketball");
+        Sport tennis = new Sport("Tennis");
+
+        // Создаем список спортсменов
+        Athlete[] athletes = {
+            new Athlete("John Smith", 25, football, "Elite Club"),
+            new Athlete("Jane Doe", 22, basketball, "Champion Club"),
+            new Athlete("Mike Johnson", 28, football, "Elite Club"),
+            new Athlete("Anna Davis", 24, tennis, "Sports Center"),
+            new Athlete("Chris Brown", 30, basketball, "Champion Club"),
+            new Athlete("Laura Wilson", 27, tennis, "Sports Center"),
+            new Athlete("David Lee", 26, football, "Elite Club"),
+            new Athlete("Emily White", 23, basketball, "Champion Club"),
+            new Athlete("Sophia Green", 29, tennis, "Sports Center"),
+            new Athlete("James Black", 21, football, "Elite Club")
+        };
+
+        // Вывод списка спортсменов
+        System.out.printf("%-15s %-5s %-15s %-15s%n", "Name", "Age", "Sport", "Club");
+        for (Athlete athlete : athletes) {
+            System.out.printf("%-15s %-5d %-15s %-15s%n",
+                    athlete.getName(),
+                    athlete.getAge(),
+                    athlete.getSport().getName(),
+                    athlete.getClub());
+        }
+    }
+}
